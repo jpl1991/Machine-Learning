@@ -57,7 +57,7 @@ def report(string, condon_mapping):
 
 	return finalstr
 
-input = ['AGTGGGGGGGGG', 'AAACCCAATTT', 'TTTACACAGCT', 'GCTGGGCCCAGT', 'RRYYGGGCCCC','AAGCCCCttt']
+input = ['AATTGGCCAATTG', 'TTGAATTGGCCAAAA', 'AAATTTGGGCCC', 'AAAEEERRRTTT','AATACCCCCGGG', 'NEWUSER123']
 
 output = updateStr(input)
 
