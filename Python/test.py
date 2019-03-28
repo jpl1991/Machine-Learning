@@ -15,3 +15,4 @@ money = calculateProfit(n, earning, cost,e)
 
 print(money)
 
+import numpy as np
