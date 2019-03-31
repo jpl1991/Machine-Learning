@@ -20,22 +20,38 @@ def updateStr(strList):
 
 
 def mergeStr(strList):
-
-	start = []
-	end = []
-	dic = {}
-	finalstr=''
-	for string in strList:
-		start.append(string[:3])
-		end.append(string[-3:])
-		dic[string[:3]] = string[3:]
-	for string in strList:
-		if(string[:3] not in end and string[-3:] in start):
-			finalstr = string
-	print(finalstr)
-	while(dic.get(finalstr[-3:])!=None):
-		finalstr += dic.get(finalstr[-3:])
-	return finalstr
+    strlist = list(strList)
+    ends = [s[-3:] for s in strlist]
+    heads = [s[:3] for s in strlist]
+    final = ''
+    ending = []
+    print(strlist)
+    for string in strList:   
+        print(string)
+        if(string[:3] not in ends and string[-3:] in heads):
+            final = string
+            strlist.remove(string)
+        elif (string[:3] in ends and string[-3:] not in heads):
+            ending.append(string)
+            strlist.remove(string)
+    print(strlist)
+    stop = False
+    while stop == False:
+        stop = True
+        for string in strlist:
+            if final[-3:] == string[:3]:
+                final += string[3:]
+                strlist.remove(string)
+                stop = False
+                break
+    
+    print(ending)
+    
+    for string in ending:
+        if final[-3:] == string[:3]:
+            final+= string[3:]
+            
+    return final    
 
 
 def report(string, condon_mapping):
