@@ -25,16 +25,16 @@ def mergeStr(strList):
     heads = [s[:3] for s in strlist]
     final = ''
     ending = []
-    print(strlist)
+    #print(strlist)
     for string in strList:   
-        print(string)
+        #print(string)
         if(string[:3] not in ends and string[-3:] in heads):
             final = string
             strlist.remove(string)
         elif (string[:3] in ends and string[-3:] not in heads):
             ending.append(string)
             strlist.remove(string)
-    print(strlist)
+    #print(strlist)
     stop = False
     while stop == False:
         stop = True
@@ -45,7 +45,7 @@ def mergeStr(strList):
                 stop = False
                 break
     
-    print(ending)
+    #print(ending)
     
     for string in ending:
         if final[-3:] == string[:3]:
@@ -69,7 +69,8 @@ def report(string, condon_mapping):
 	keys =list(dic.keys())
 	keys.sort()
 	for key in keys:
-		finalstr+= key+": "+ str(dic.get(key))+"\n"
+		if(dic.get(key)>0):
+			finalstr+= key+": "+ str(dic.get(key))+"\n"
 
 	return finalstr
 
