@@ -1,0 +1,7 @@
+1. what is SVM:
+	svm is supervised machine learning algorithm which used for both classification and regresssion problems
+	SVMs is based on the idea of finding a hyperplane that best divides a dataset in two classes.
+	How to finding the  hyperplane is depends on the largest margin.
+
+2. SVM vs Logistic
+	
