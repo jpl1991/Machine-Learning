@@ -4,4 +4,55 @@
 	How to finding the  hyperplane is depends on the largest margin.
 
 2. SVM vs Logistic
+
+3. Backpropagation:
+	for each training instance the backpropagation algorithm first makes a prediction(forward pass), measures the error, then goes through each layer in reverse to measure the error contribution from each connection(reverse pass), and finally slightly tweaks the connection weights to reduce the error.(Gradient Descent step)
+
+4. ReLU(rectified linear unit)function:
+	Most importantly, the fact that it does not have maximum output value also helps reduced likelihood of vanishing gradien.
+
+	The issue is that all the negative values becomes zero immediately which descreases the ability of the model to fit or train from data properly.
 	
+	Because of the horizontal line in ReLu(for negative X), teh graident can go towards 0. For activations in that region of Relu, gradient will be 0 because of which the weights will not get adjusted during descent. That means, those neurons which go into that state will stop responding to variations in error/input(simply because gradient is 0, nothing changes) This is called dying ReLu problem. This problem can cause several neurons to just die and not respond making a substantial part of the network passive. There are variations in ReLu to mitigate this issue by simply making the horizontal line into non horizontal component. For example y = 0.01x for x < 0 will make it slightly inclined line rather than horizontal line. This is leakly Relu. There are other variations too. THe main idea is to let the gradient be non zero and recover during training eventually.
+
+
+
+5.  Vanishing Gradients:
+	Vanishing gradient problem depends on the choice of the activation funciton. Many common activation functions(e.g sigmoid or tanh)'squash' their input into a very small output range in a very non-linear fashion. For example, sigmoid maps the real number line onto a "small" range of [0,1]. As a result, there are large regions of the input space which are mapped to an extremely small range. in these regions of the input space, even a large change in the input will produce a small change in the output- hence the graident is small.
+
+	This becomes much worse when we stack multiple layes of such non-linearities on top of ech other. For instance, first layer will map a large input region to a smaller output region, which will be mapped to an even smaller region by the second layer, which will be mapped to an even smaller region by the third layer and so on. As a result, even a large change in the parameter of the first layer doesn't change the output much.
+
+	We can avoid this problem by using activation functions which don't have this property of 'squashing' the input space into a small region. A popular choice is Rectified linear Unit which maps x to max(0, x).
+
+
+
+	 The bigger the input(in absolute value) the smaller the gradient of the sigmoid function. But, probably an even more important effect is that the derivative of the sigmoid function is Always smaller than one. In fact it is at most 0.25!?
+
+	 The down side of this is that if you have many layers, you will multiply these gradients, and the product of many smaller than 1 values goes to zero very quickly.
+
+	 Since the state of the art of for Deep learning has shown that more layers helps a lot, then this disadvantage of the Sigmoid function is a game killer. You just can't do deep learning with sigmoid.
+
+	 On the other hand the gradient of the ReLu function is either 0 for a < 0 or 1 for a>0. That means that you can put as many layers as you like, because multiplying the gradients will neither vanish nor explode.
+
+
+
+
+	6. Sigmoid Activation function:
+		* Vanishing gradient problem
+		* Secodly, its output isn't zero centered. It makes the gradient updates go too far in different directions. 0 < output < 1, and it makes optimization harder.
+		* sigmoids saturate and kill gradients.
+		* Sigmoid have slow convergence.
+			 Convergence is usually faster if the average of each input variable over the training set is close to zero.
+
+		advantage:
+			the activaton function is always going to be in range (0,1) compare to (-inf, inf) of linear function. So we have our activation bound in a range. Nice, it won't blow up the activations then.
+
+
+
+
+
+
+
+
+
+
