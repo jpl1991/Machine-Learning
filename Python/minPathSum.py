@@ -56,6 +56,16 @@ print("down to top minimun: ", output2)
 
 
 
+st = "kincenvizh"
+setstr = set()
+
+setstr.add("ki")
+setstr.add("ki")
+print(setstr)
+
+print(len(st))
+for s in range(1, len(st)):
+    print(st[:s])
 
 
 

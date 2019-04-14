@@ -3,7 +3,30 @@
     SVMs is based on the idea of finding a hyperplane that best divides a dataset in two classes.
     How to finding the  hyperplane is depends on the largest margin.
 
+1.2 what is logistic regresssion:
+	in logistic regression, we take the output of the linear function and squash teh value within the range of [0,1] using the sigmoid function(logistic function). The Sigmoid Function is an S-shape curve that can take any real-value number and map it into a value between the range 0 and 1, but never exactly at those limits.
+	we want to amximize teh likelihood that a randome data point gets classified correctly.
+
+	you can maximize the likelihood using different methods like an optimization algorithm(Newton's Method, Gradient Descent etc)
+
+1.3 Different between logistic and linear regression:
+	the different is that logistic regression gives you a discrete outcome but linear regression gives a continuous outcome. 
+
 2. SVM vs Logistic:
+	* SVM try to maximize the margin between the closest support vectors while LR the posterior class probability. Thus, SVM find a solution which is as fare as possible for teh two categories while LR has not this property.
+
+	* LR is more sensitive to outliers than SVM because the cost function of LR diverges faster than those of SVM.
+
+	* Logistic Regressio produces probabilistic values while SVM produces 1 or 0. So in a few words LR makes not absolute prediction and it does not assume data is enough to give a final decision. This maybe be good property when what we want is an estimation or we do not have high confidence into data.
+
+	Usually, in order to get discrete values 1 or 0 for the LR we can say that when a function value is greater than threshold we classify as 1 and when a function value is smaller than threshold we calssify as 0.
+
+	In general:
+	* SVM tries to find the widest possible separating margin, while Logistic Regression optimizes the log likelihood funciton, whith probabilities modeled by the sigmoid fucntion.
+	* SVM extends by using kernel tricks, transforming datasets into rich features space, so that complex problems can be still dealt with in the same "linear" fashion in the lifted hyper space.
+
+
+
 
 3. Backpropagation:
     for each training instance the backpropagation algorithm first makes a prediction(forward pass), measures the error, then goes through each layer in reverse to measure the error contribution from each connection(reverse pass), and finally slightly tweaks the connection weights to reduce the error.(Gradient Descent step)
@@ -32,7 +55,7 @@
 
      Since the state of the art of for Deep learning has shown that more layers helps a lot, then this disadvantage of the Sigmoid function is a game killer. You just can't do deep learning with sigmoid.
 
-     On the other hand the gradient of the ReLu function is either 0 for a < 0 or 1 for a>0. That means that you can put as many layers as you like, because multiplying the gradients will neither vanish nor explode.
+     On the other hand the gradient of the ReLu function is either 0 for a < 0 or 1 for a > 0. That means that you can put as many layers as you like, because multiplying the gradients will neither vanish nor explode.
 
 
 
@@ -48,6 +71,8 @@
             the activaton function is always going to be in range (0,1) compare to (-inf, inf) of linear function. So we have our activation bound in a range. Nice, it won't blow up the activations then.
 
 
+7. Boosting vs bagging
+	bagging is use the same algorithm for every predictor, but to train them on different random subsets of the trianing set.
 
 
 
