@@ -90,5 +90,4 @@ output3 = cherryPickUp3d(grid3)
 
 print(output3)
 
-print(float('-inf')+100)
 
