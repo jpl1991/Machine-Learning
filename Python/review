@@ -38,12 +38,33 @@
     
     Because of the horizontal line in ReLu(for negative X), teh graident can go towards 0. For activations in that region of Relu, gradient will be 0 because of which the weights will not get adjusted during descent. That means, those neurons which go into that state will stop responding to variations in error/input(simply because gradient is 0, nothing changes) This is called dying ReLu problem. This problem can cause several neurons to just die and not respond making a substantial part of the network passive. There are variations in ReLu to mitigate this issue by simply making the horizontal line into non horizontal component. For example y = 0.01x for x < 0 will make it slightly inclined line rather than horizontal line. This is leakly Relu. There are other variations too. THe main idea is to let the gradient be non zero and recover during training eventually.
 
+    Its limiation is that it should only be used within Hidden layers of a Neural Network Model
+    Hence for output layers we should use a Softmax function for a Classification problem to compute the probabilites for the class, and for a regressin problem it should simply use a linear function.
+
+    * Pros:
+    	1. It avoid and rectifies vanishing gradient problem
+    	2. ReLU is less computationally expensive than tanh and sigmoid because it involves simpler mathematical operations
+    * Cons:
+    	1. One of its limitation is that it should only be used with hidden layers of a Neural Network Model
+    	2. Some gradients can be fragile during training and can die. It can cause a weight update which will makes it never activate on any data point again. Simply saying that ReLu could result in Dead Neurons.
+    	3. In another words, for activations in region(x<0) of Relu, gradient will be 0 because of which the weight will not get adjusted during descent. That means, those neurons which go into that state will stop responding to variations in error/input(simply because gradient is 0, nothing changes). This is called dying Relu problem.
+    	4. The range of Relu is [0, inf). This means it can blow up the activation.
+
+4.2 ELU exponential Linear Unit:
+	Exponential linear unit is a function that tend to converge cost to zero faster and produce more accurate results. Different to other activation functions, ELU has a extra alpha constant which should be positive number.
+
+	ELU is very similar to RELU except negative inputs. They are both in identity function form for non-negative inputs.
+
+	* Pros:
+		1. Unlike to Relu, ELU can produce negative outputs.
+		2. ELU becomes smooth slowly until its output equal to -a whereas RELU sharply smoothes.
+		3. ELU is a strong alternative to RELU.
 
 
 5.  Vanishing Gradients:
     Vanishing gradient problem depends on the choice of the activation funciton. Many common activation functions(e.g sigmoid or tanh)'squash' their input into a very small output range in a very non-linear fashion. For example, sigmoid maps the real number line onto a "small" range of [0,1]. As a result, there are large regions of the input space which are mapped to an extremely small range. in these regions of the input space, even a large change in the input will produce a small change in the output- hence the graident is small.
 
-    This becomes much worse when we stack multiple layes of such non-linearities on top of ech other. For instance, first layer will map a large input region to a smaller output region, which will be mapped to an even smaller region by the second layer, which will be mapped to an even smaller region by the third layer and so on. As a result, even a large change in the parameter of the first layer doesn't change the output much.
+    This becomes much worse when we stack multiple layes of such non-linearities on top of each other. For instance, first layer will map a large input region to a smaller output region, which will be mapped to an even smaller region by the second layer, which will be mapped to an even smaller region by the third layer and so on. As a result, even a large change in the parameter of the first layer doesn't change the output much.
 
     We can avoid this problem by using activation functions which don't have this property of 'squashing' the input space into a small region. A popular choice is Rectified linear Unit which maps x to max(0, x).
 
@@ -60,16 +81,23 @@
 
 
 
-    6. Sigmoid Activation function:
-        * Vanishing gradient problem
-        * Secodly, its output isn't zero centered. It makes the gradient updates go too far in different directions. 0 < output < 1, and it makes optimization harder.
-        * sigmoids saturate and kill gradients.
-        * Sigmoid have slow convergence.
+ 6. Sigmoid Activation function:
+    * Vanishing gradient problem
+    * Secodly, its output isn't zero centered. It makes the gradient updates go too far in different directions. 0 < output < 1, and it makes optimization harder.
+    * sigmoids saturate and kill gradients.
+    * Sigmoid have slow convergence. 
              Convergence is usually faster if the average of each input variable over the training set is close to zero.
 
-        advantage:
-            the activaton function is always going to be in range (0,1) compare to (-inf, inf) of linear function. So we have our activation bound in a range. Nice, it won't blow up the activations then.
+    advantage:
+       the output of  the activaton function is always going to be in range (0,1) compare to (-inf, inf) of linear function. So we have our activation bound in a range. Nice, it won't blow up the activations then.
 
+6.2 Tanh Hyperbolic tangent function:
+	Tanh squashed a real-valued number to the range [-1,1]. It's non-linear. But unlike Sigmoid, its output is zero-centered.
+
+	*Pros:
+		the gradient is stronger for tanh than sigmoid(derivatives are steeper)
+	*Cons:
+		Tanh also has the vanishing gradient problem
 
 7. Boosting vs bagging
 	bagging is use the same algorithm for every predictor, but to train them on different random subsets of the trianing set.
@@ -77,7 +105,14 @@
 
 
 
+8. Linear acitvation function:
+	A straight line function where activation is proportional to input(which is the weighted sum from neuron)
 
-
-
+	* Pros:
+		1. It gives a range of activations, so it is not binary activation
+		2. We can definitely connect a few neurons together and if more than 1 fires, we could take the max(or softmax) and decide based on that.
+	* Cons:
+		1. For this function, derivative is a constant That means, the gradient has no relationship with X.
+		2. It is a constant gradient and the descent is going to be on constant gradient
+		3. If there is an error in prediction, the changes made by back propagation is constant and not depending on the change in the input delta(X)
 
