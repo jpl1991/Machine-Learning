@@ -20,7 +20,6 @@ def uniquePathsWithObstacles(obstacleGrid):
         :type obstacleGrid: List[List[int]]
         :rtype: int
         """
-
         m = len(obstacleGrid)
         n = len(obstacleGrid[0])
 

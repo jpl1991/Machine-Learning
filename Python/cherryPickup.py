@@ -75,7 +75,7 @@ def cherryPickUp3d(grid):
         #print('r2:{}, c2:{}'.format(r2,c2))
         #print(memo)
         return ans
-    return max(0, dp(0,0,0))
+    return max(0, dp(0,0,0)), memo
 
 
 grid3 = [
@@ -86,8 +86,20 @@ grid3 = [
         [0,0,1,1,1]
 ]
 
-output3 = cherryPickUp3d(grid3)
+output3, memory = cherryPickUp3d(grid3)
 
 print(output3)
+print(memory)
 
+
+def cherryPickUpP(grid):
+	N = len(grid)
+
+	memory = [[[None]*N for _ in range(N)] for _ in range(N)]
+
+	def findMax(r1, c1, r2, c2):
+
+		if(r1 == N or c1 == N or r2 ==N or c2 == N
+			or grid[r1][c1]==-1 or grid[r2][c2]==-1):
+			return float('-inf')
 
