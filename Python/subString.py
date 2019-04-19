@@ -13,6 +13,8 @@ def subString(string):
 
 	return substrings
 
-s = subString("aaaa")
+s = subString("abca")
 
-print(len(s))
+print('The number of substrings:',len(s))
+
+print(s)
