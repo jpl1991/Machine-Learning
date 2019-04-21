@@ -44,19 +44,52 @@ def uniquePathsWithObstacles(obstacleGrid):
         # i.e. From above and left.
         for i in range(1,m):
             for j in range(1,n):
-                if obstacleGrid[i][j] == 0:
+                if obstacleGrid[i][j] == 1:
                     obstacleGrid[i][j] = obstacleGrid[i-1][j] + obstacleGrid[i][j-1]
                 else:
                     obstacleGrid[i][j] = 0
 
         # Return value stored in rightmost bottommost cell. That is the destination.            
-        return obstacleGrid[m-1][n-1]
+        return obstacleGrid
 
-obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]];
+obstacleGrid = [[0,1,0],[0,0,0],[0,0,0]];
 
 paths = uniquePathsWithObstacles(obstacleGrid)
 print("paths:", paths)
 
 test = [1,2,3,4,5]
 print(test[::-1])
+
+def numberOfpath(grid):
+    rows = len(grid)
+    cols = len(grid[0])
+
+    if grid[0][0]==0:
+        return 0
+    if grid[rows-1][cols-1] ==0:
+        return 0
+    
+    for row in range(1, rows-1):
+        if(grid[row][0]==0):
+            grid[row+1][0]=0
+    for col in range(1, cols-1):
+        if(grid[0][col]==0):
+            grid[0][col+1]=0
+    
+    for row in range(1, rows):
+        for col in range(1, cols):
+            if grid[row][col] == 1:
+                
+                grid[row][col] = grid[row-1][col] + grid[row][col-1]
+            else:
+                grid[row][col] = 0
+    return grid
+
+grid = [[1,1,0,1],
+        [1,1,1,1],
+        [1,1,0,1],
+        [1,1,1,1]]
+        
+print(numberOfpath(grid))
+
 
