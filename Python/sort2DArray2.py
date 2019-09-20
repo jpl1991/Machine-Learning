@@ -26,3 +26,4 @@ matrix = [[ 5, 12, 17, 21, 23],
 sorted_matrix = sortMatrix(matrix)
 
 print(sorted_matrix)
+print(int(3/2))
