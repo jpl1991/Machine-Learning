@@ -80,7 +80,7 @@ output = updateStr(input)
 
 mergeoutput = mergeStr(output)
 
-print(mergeoutput)
+print(mergeoutput) 
 
 condon_mapping = {'AAA':'Lysine','GGG':'Glycine','TTT':'Phenylalanine'}
 final = report(mergeoutput, condon_mapping)

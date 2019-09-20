@@ -19,7 +19,7 @@
 
 	* Logistic Regressio produces probabilistic values while SVM produces 1 or 0. So in a few words LR makes not absolute prediction and it does not assume data is enough to give a final decision. This maybe be good property when what we want is an estimation or we do not have high confidence into data.
 
-	Usually, in order to get discrete values 1 or 0 for the LR we can say that when a function value is greater than threshold we classify as 1 and when a function value is smaller than threshold we calssify as 0.
+	Usually, in order to get discrete values 1 or 0 for the LR we can say that when a function value is greater than threshold we classify as 1 and when a function value is smaller than threshold we classify as 0.
 
 	In general:
 	* SVM tries to find the widest possible separating margin, while Logistic Regression optimizes the log likelihood funciton, whith probabilities modeled by the sigmoid fucntion.
