@@ -10,6 +10,15 @@
     * When passing through a path cell containing a cherry, you pick it up and the cell becomes an empty cell (0);
     * If there is no valid path between(0,0) and (N-1,N-1), then no cherries can be collected.
 
+    Idea:
+        Notice after t steps, each postion (r, c) we could be, is on the line r + c = t. So if we have two 
+        people at postion (r1, c1) and (r2, c2), then r2 = r1 + c1 - c2. That means the variables r1, c1, c2 uniquely
+        determine 2 people who have walked the same r1 + c1 number of steps. This sets us up for dynamic programming
+        quite nicely.
+
+        for example: r1 = 4, c1 = 3 and r2 = 3, then t = 7, c2 = r1 + c1 - r2 = 4. Becasue both people have same total step t.
+
+        
 '''
 grid = [[0,1,-1],
         [1,0,-1],
