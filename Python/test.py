@@ -93,4 +93,5 @@ grid = [[1,1,0,1],
 print(numberOfpath(grid))
 
 
-
+print(4%3)
+print(5%3)
