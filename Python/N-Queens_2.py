@@ -10,6 +10,3 @@ def totalQueens(n):
 
 		for j in range (0, n):
 			
-
-			
-
