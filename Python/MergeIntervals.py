@@ -5,6 +5,8 @@ class Solution(object):
 		:type intervals: List[List[int]]
 		:rtype List[List[int]]
 		'''
+		if(len(intervals)<=1):
+			return intervals
 		sortl = sorted(intervals)
 		maxn = sortl[0][1]
 		minn = sortl[0][0]
