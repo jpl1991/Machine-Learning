@@ -22,10 +22,12 @@ class Solution(object):
 		matrix = [[0 for _ in range(n)] for _ in range(n)]
 
 		e = 0
-		for row in matrix:
-			for c in row:
-				c = e + 1
+		for row in range(n):
+			for c in range(n):
+				matrix[row][c] = e+1 
 				e += 1 
+
+		
 
 
 
