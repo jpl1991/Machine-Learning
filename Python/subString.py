@@ -13,7 +13,7 @@ def subString(string):
 
 	return substrings
 
-s = subString("abca")
+s = subString("123")
 
 print('The number of substrings:',len(s))
 
