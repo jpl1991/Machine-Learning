@@ -49,7 +49,7 @@ class Solution(object):
 		return ls
 
 
-def preorder(root):9025
+def preorder(root):
 
 	if(root!=None):
 		print(root.val)
